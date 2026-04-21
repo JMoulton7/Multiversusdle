@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MultiVersus Dle</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="MVS_dle_UI.css">
+</head>
+<body>
+
+  <!-- Hover Info Icon (top left) -->
+  <div class="info-container">
+    <div class="info-icon">?</div>
+    <div class="info-tooltip">
+      <strong>⚠️ Important Note</strong><br>
+      All 5 boxes can be green, but that doesn't always mean you've guessed correctly!<br>
+      Different fighters can share all the same attributes.<br>
+      You'll receive a victory message only when you guess the exact fighter name.
+    </div>
+  </div>
+
+  <div class="app">
+    <h1>MultiVersus Dle</h1>
+
+    <!-- Search -->
+    <input id="search" placeholder="Guess a fighter..." autocomplete="off" />
+    <ul id="results"></ul>
+
+    <!-- Game Info -->
+    <p id="counter">Guesses: 0</p>
+    <p id="status"></p>
+
+    <!-- Guess Grid -->
+    <div id="guesses"></div>
+  </div>
+
+  <!-- Link JS (keep this at the very bottom) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+/* ===== Layout ===== */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url("images/mvs-banner.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+    color: white;
+}
+  
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+/* ===== Hover Info Icon (Top Left) ===== */
+.info-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.info-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffd700;
+    cursor: default;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+}
+
+.info-icon:hover {
+    background: rgba(0, 0, 0, 0.85);
+    border-color: #ffd700;
+    transform: scale(1.05);
+}
+
+.info-tooltip {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 15px;
+    min-width: 260px;
+    max-width: 300px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #f0f0f0;
+    border: 1px solid #ffd700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.info-container:hover .info-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+  
+.app {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+}
+  
+/* ===== Search ===== */
+  
+#search {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+  
+/* ===== Dropdown ===== */
+  
+#results {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+}
+  
+#results li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+  
+#results li:hover {
+    background: #444;
+}
+  
+/* ===== Guess Rows ===== */
+  
+#guesses {
+    margin-top: 20px;
+}
+  
+.guess-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+  
+.cell {
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    position: relative;
+}
+  
+/* ===== Result Colors ===== */
+  
+.correct {
+    background-color: #4caf50;
+    color: white;
+}
+  
+.wrong {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Header row styling */
+.header-row .cell {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+/* Name column styling */
+.name-cell {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* Tooltip styling for attribute headers (Universe, Class, Weight, Era, Gender) */
+.header-row .cell:not(:first-child) {
+    cursor: help;
+}
+
+.attr-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #f0f0f0;
+    border: 1px solid #ffd700;
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    margin-bottom: 8px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Allow multi-line tooltips */
+.attr-tooltip.multi-line {
+    white-space: normal;
+    min-width: 180px;
+    max-width: 250px;
+    text-align: left;
+}
+
+.header-row .cell:not(:first-child):hover .attr-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Small arrow on tooltip */
+.attr-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffd700 transparent transparent transparent;
+}
